@@ -6,7 +6,7 @@
 /*   By: yait-oul <yait-oul@student.1337.ma >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 09:07:36 by yait-oul          #+#    #+#             */
-/*   Updated: 2023/04/16 10:31:38 by yait-oul         ###   ########.fr       */
+/*   Updated: 2023/04/16 10:51:27 by yait-oul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int						eating(t_philo *philo);
 void					malloc_it(t_philo *philo, t_data data);
 int						creation_threads(t_data *data, t_philo *philo);
 void					init_philos(t_philo **ph, t_data **data);
-void	                see_if_dead(t_philo *philo);
+void					see_if_dead(t_philo *philo);
 int						philo_sleeping(unsigned long duree, t_philo *philo);
 int						print_msg(char *str, t_philo *philo);
 int						thinking(t_philo *philo);
@@ -69,7 +69,7 @@ void					ft_clear(t_philo *philo);
 void					deallocate(t_philo *philo);
 int						ft_atoi(char *str);
 int						check_error(int ac, char **av);
-int                     is_dead(t_philo *philo, int i);
-void                    to_sleep(t_philo *philo);
-void                    detaching_threads(t_philo *philo, t_data *data);
+int						is_dead(t_philo *philo, int i);
+void					to_sleep(t_philo *philo);
+void					detaching_threads(t_philo *philo, t_data *data);
 #endif
