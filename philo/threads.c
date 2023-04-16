@@ -6,7 +6,7 @@
 /*   By: yait-oul <yait-oul@student.1337.ma >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 09:09:23 by yait-oul          #+#    #+#             */
-/*   Updated: 2023/04/16 10:44:00 by yait-oul         ###   ########.fr       */
+/*   Updated: 2023/04/16 18:22:30 by yait-oul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_philo	*init_mutexes(t_philo *philo)
 
 int	eating(t_philo *philo)
 {
+	
 	print_msg("is thinking", philo);
 	pthread_mutex_lock(&philo->data->forks[(philo->id + 1)
 		% philo->data->n_philos]);

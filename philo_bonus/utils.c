@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yait-oul <yait-oul@student.1337.ma >       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/16 18:35:24 by yait-oul          #+#    #+#             */
+/*   Updated: 2023/04/16 18:40:35 by yait-oul         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo_bonus.h"
 
 u_int64_t	get_time(void)
@@ -8,6 +20,7 @@ u_int64_t	get_time(void)
 		return (printf("gettimeofday() FAILURE\n"));
 	return ((tv.tv_sec * (u_int64_t)1000) + (tv.tv_usec / 1000));
 }
+
 void	ft_usleep(unsigned long time)
 {
 	unsigned long	start;
@@ -20,10 +33,11 @@ void	ft_usleep(unsigned long time)
 		usleep(200);
 	}
 }
+
 int	ft_atoi(char *str)
 {
-	int res;
-	int negative;
+	int	res;
+	int	negative;
 
 	negative = 1;
 	res = 0;

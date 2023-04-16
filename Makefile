@@ -11,8 +11,7 @@ BSRC=$(addprefix $(BOBJECTSDIR)/, philo_process.c processes.c states.c utils.c)
 BOBJ=$(BSRC:.c=.o)
 
 CC=gcc
-CFLAGS=-Wall -Wextra -Werror
-RM=rm -f
+CFLAGS= -Wall -Wextra -Werror #-g -fsanitize=thread
 
 .PHONY: all clean fclean re bonus
 
