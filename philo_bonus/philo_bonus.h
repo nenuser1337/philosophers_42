@@ -6,7 +6,7 @@
 /*   By: yait-oul <yait-oul@student.1337.ma >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 18:35:28 by yait-oul          #+#    #+#             */
-/*   Updated: 2023/04/16 18:35:29 by yait-oul         ###   ########.fr       */
+/*   Updated: 2023/04/16 18:46:53 by yait-oul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,5 @@ void					forker(t_philo *philo, int nprocesses);
 int						creation_processes(t_data *data, t_philo *philo);
 void					child_process(t_philo *philo);
 void					exit_philo(t_philo **philo);
+t_data					*semaphores(t_data *data);
 #endif

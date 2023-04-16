@@ -6,7 +6,7 @@
 /*   By: yait-oul <yait-oul@student.1337.ma >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 18:35:21 by yait-oul          #+#    #+#             */
-/*   Updated: 2023/04/16 18:40:54 by yait-oul         ###   ########.fr       */
+/*   Updated: 2023/04/16 18:47:18 by yait-oul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,5 @@ t_data	*semaphores(t_data *data)
 	data->death = sem_open("/death", O_CREAT, 0600, 1);
 	data->printing = sem_open("/printing", O_CREAT, 0600, 1);
 	data->last_lunch = sem_open("/last_lunch", O_CREAT, 0600, 1);
+	return (data);
 }

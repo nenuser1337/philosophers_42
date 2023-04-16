@@ -6,7 +6,7 @@
 /*   By: yait-oul <yait-oul@student.1337.ma >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 18:35:18 by yait-oul          #+#    #+#             */
-/*   Updated: 2023/04/16 18:39:26 by yait-oul         ###   ########.fr       */
+/*   Updated: 2023/04/16 18:47:05 by yait-oul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_data	*init_data(int ac, char **av)
 	data->has_eaten = 0;
 	data->n_philos = ft_atoi(av[1]);
 	data->dead = 0;
-	data = semaphores(t_data data);
+	data = semaphores(data);
 	return (data);
 }
 
