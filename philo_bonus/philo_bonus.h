@@ -15,7 +15,7 @@
 
 typedef struct s_data
 {
-	unsigned long long   t_todie;
+	int   t_todie;
     unsigned long  t_tosleep;
     unsigned long  t_toeat;
     unsigned long  t_start;

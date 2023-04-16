@@ -66,7 +66,7 @@ int main(int ac, char **av)
 	data = init_data(ac, av);
 
 	philo = init_philo(data);
-    pid_t pid[data->n_philos];
+    // pid_t pid[data->n_philos];
     int     i;
     int     j;
     int     status;

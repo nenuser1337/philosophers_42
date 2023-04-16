@@ -3,7 +3,7 @@
 void	philo_sleeping(unsigned long duree, t_philo *philo)
 {
 	unsigned long	current;
-
+	(void)philo;
 	current = get_time();
 	while (get_time() - current < duree)
 	{
