@@ -8,7 +8,7 @@ Le diner des philosophes est un exemple courant pour illustrer le concept de syn
 
 La synchronisation entre threads est un mécanisme qui assure que deux threads concurrents ou plus n'exécutent pas un segment particulier du programme en meme temps. Ce segment s'appelle la section critique (une partie de code accédée par plusieurs threads en meme temps). En d'autres termes, la synchronisation garantit une exécution concurrente et non simultanée entre les threads. Cette méthode est utile pour éviter les "data races" : l'accès simultané à une ressource partagée par plusieurs acteurs.
 
-La synchronisation est réalisée par le biais d'un [algorithme concurrent](https://en.wikipedia.org/wiki/Concurrency_(computer_science)), où plusieurs tâches peuvent être exécutées dans une période de temps qui se chevauche (sans entrer en conflit). L'intérêt de cette méthode est de garantir l'exécution correcte des threads et d'éviter les erreurs de concurrence.      
+La synchronisation est réalisée par le biais d'un [algorithme concurrent](https://en.wikipedia.org/wiki/Concurrency_(computer_science)). , où plusieurs tâches peuvent être exécutées dans une période de temps qui se chevauche (sans entrer en conflit). L'intérêt de cette méthode est de garantir l'exécution correcte des threads et d'éviter les erreurs de concurrence.      
 
 
 [Et s'te-plait, parle cash, n*gro, parle-moi concrètement](https://genius.com/Freeze-corleone-fentanyl-lyrics).       
