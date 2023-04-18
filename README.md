@@ -2,35 +2,32 @@
 multithreading project in c to solve the dining philosophers problem.
 
 ## description du projet : 
-le diner des philosophes est un bon example pour illustrer le concept de **sychronisation** en informatique systemes.
-qu'est ce qu'on entend par sychronisation , dans le cadre de notre projet (mandatory part) on va se focaliser sur les threads. 
-un thread est le plus petit sequence d'instructions programme par le **scheduler** (process reponsable d'attribuer les ressources necessaires pour effectuer une tache)
-d coup la sychronisaiton entre threads est un mecanisme qui assure que deux threads concurents ou plus n'executent pas un segment particulier du programme en meme temps.
-ce segment s'appelle **critical section**(une partie de code accede par plus plusieurs threads en meme temps) , en d'autres termes la sychronisation garantit une execution concurrente et non simultanee entre les threads. 
-quel est l'interet de cette methode ? ca sert a eviter les "data races" : l'acces a une ressource partage par plusieurs acteurs en meme instant. 
-cette sychronoisation est faite par le biais d'un algorithme concurrent , conccurent algorithme ou mulitiple taches peuvent etre execute dans une periode temps qui se chevauche (sans qu'ils rentrent en conflit).
+Le diner des philosophes est un exemple courant pour illustrer le concept de synchronisation en informatique système. La synchronisation, dans le cadre de notre projet (partie obligatoire), se concentre sur les threads. Un thread est la plus petite séquence d'instructions programmée par le scheduler (processus responsable d'attribuer les ressources nécessaires pour effectuer une tâche).
+
+La synchronisation entre threads est un mécanisme qui assure que deux threads concurrents ou plus n'exécutent pas un segment particulier du programme en même temps. Ce segment s'appelle la section critique (une partie de code accédée par plusieurs threads en même temps). En d'autres termes, la synchronisation garantit une exécution concurrente et non simultanée entre les threads. Cette méthode est utile pour éviter les "data races" : l'accès simultané à une ressource partagée par plusieurs acteurs.
+
+La synchronisation est réalisée au moyen d'un algorithme concurrent, où plusieurs tâches peuvent être exécutées dans une période de temps qui se chevauche (sans entrer en conflit). L'intérêt de cette méthode est de garantir l'exécution correcte des threads et d'éviter les erreurs de concurrence.
 [Et s'te-plait, parle cash, n*gro, parle-moi concrètement](https://genius.com/Freeze-corleone-fentanyl-lyrics).
 
-d'accord revenons au sujet du projet , les threads sont presentes par des philosophes et les ressources partages sont les fourchettes
-chaque philosophe a besoin de deux fourchettes pour manger or ils peuvent pas y acceder en meme temps. il y a une fourchette entre chaque paire de philosophes , autrement dit chaque phlosophe a une fourchette a gauche a une autre
-a droite ce qui  signifie que deux philosophes adjacents ne peuvent pas acceder a deux fourchette en meme temps . alors le projet consiste a trouver une
-solution pour que tous les philosophes puissent manger , dormir , et reflechir avant que la duree donnee **time_to_die** dans le projet ne s'ecoule.
-pour resoudre ce probleme on doit eviter les **data-races** , on doit faire en sorte que deux ou plus philosophes/threads ne modifient pas une ressource partagee en meme instant.
-je vais utiliser une simple analogie avant de parler de l'aspect technique de la solution . imaginons une queue de personnes qui attendent qu'un cabinet d'essayage se libere pour l'utiliser, a chaque fois une personne rentre 
-elle verouille la porte avec un cle , la personne suivant verifie si la porte est verouillee ou pas pour rentrer et ainsi de suite pour le reste de la queue. dans l'informatique on a une abstraction des cles de la porte dans la vrai vie
-ce sont les **mutexes** . ce sont des verrou qu'on utiliser pour verouiller une ressource partage pour un seul thread et la liberer apres. dans notre projets
-les ressources partages sont les fourchettes et les printfs (chaque thread utilise la meme printf pour afficher un message son etat actuel)
-chaque philosophe se comportetera de cette maniere :  
-- reflichir tant que la fourchette a sa droite n'est pas disponible , si c'est le cas la prendre.
-- si le temps d'attente depasse la duree demandee dans le sujet , le philosophe meurt de faim et notre experimentation s'acheve ici
--reflichir tant que la fourchette a sa gauche n'est pas disponible , si c'est le cas la prendre.
--si le temps d'attente depasse la duree demandee dans le sujet, le philosophe meurt de faim et notre experimentation s'acheve ici
-- manger pour une duree determinee
-- poser la fourchette a droite 
--  poser la fourchette a gauche
--  repeter depuis le debut
+Très bien, pour résoudre ce problème, nous avons besoin de mettre en place un mécanisme de synchronisation entre les threads qui représentent les philosophes, et les ressources partagées qui sont les fourchettes. Comme chaque philosophe a besoin de deux fourchettes pour manger, il est essentiel de garantir que deux philosophes adjacents ne peuvent pas accéder à deux fourchettes en même temps. Le but est de trouver une solution pour que tous les philosophes puissent manger, dormir et réfléchir avant que la durée donnée par "time_to_die" ne s'écoule.
 
-attention une utilisaion erronee des mutex peut entrainer un **dead-lock** , un exemple pour ce cas de figure : 
+La synchronisation nous permettra d'éviter les "data-races" qui surviennent lorsque deux ou plusieurs philosophes/threads essaient de modifier une même ressource partagée en même temps.
+Je vais utiliser une analogie simple pour illustrer l'aspect technique de la solution. Imaginons une file d'attente de personnes attendant qu'un cabinet d'essayage se libère pour l'utiliser. À chaque fois qu'une personne entre, elle verrouille la porte avec une clé. La personne suivante vérifie si la porte est verrouillée ou non pour entrer, et ainsi de suite pour le reste de la file. Dans le domaine de l'informatique, on a une abstraction de cette clé de porte, ce sont les mutexes. Ce sont des verrous utilisés pour verrouiller une ressource partagée pour un seul thread et la libérer après.. dans notre projet les ressources partages sont les fourchettes et les printfs (chaque thread utilise la meme printf pour afficher un message de son etat actuel)
+
+Dans notre projet, les ressources partagées sont les fourchettes et les printfs (chaque thread utilise la même printf pour afficher un message sur son état actuel).
+
+Pour résumer le projet, chaque philosophe se comportera de cette manière :
+
+-Réfléchir tant que la fourchette à sa droite n'est pas disponible, si c'est le cas, la prendre.
+-Si le temps d'attente dépasse la durée demandée dans le sujet, le philosophe meurt de faim et notre expérience s'achève ici.
+-Réfléchir tant que la fourchette à sa gauche n'est pas disponible, si c'est le cas, la prendre.
+-Si le temps d'attente dépasse la durée demandée dans le sujet, le philosophe meurt de faim et notre expérience s'achève ici.
+-Manger pour une durée déterminée (time_to_eat).
+-Poser la fourchette à droite.
+-Poser la fourchette à gauche.
+-Répéter depuis le début.
+
+Attention, une utilisation erronée des mutex peut entraîner un deadlock. Un exemple pour ce cas de figure :
 ```
 
 #include <stdio.h>
@@ -76,10 +73,9 @@ imaginons que le thread A obtienne mutexA et le thread B obtienne mutexB, mais e
 
 ## implementation :
 
-j'ai cree deux structures , une qui represente chaque philosophe et ses donnees perso comme id, et une autre structure generale pour toutes les infos partages par tous les philosophes , tel que les durees , nombre de philos et les mutexes ... bien sur vous pouvez faire autrement mais je suggere de faire en sorte que chaque philosophe pointe sur la structure de data generale.
-Apres l'initialisation des donnes , on met une boucle afin de creer n philosophes qui executerons la fonction responsable des 3 actions (thinking , taking forks , eating and sleeping) , faites en sorte de lancer d'abord les threads d'indices paires en premier puis ceux d'indice impaire afin de permettre un petit interval d'execution entre les philosophes pour eviter les interblocages (utlisez ft_usleep aussi). n'oubliez pas de verouiller toute 
-ressource partagee (forks, fprintf, des variables partages , ect ect). une fois aue les philosopes sont lances il est necessaire de verifier si l'un d'entre eux est mort ou pas , pour cela on a besoin d'un moniteur qui surveille sur tous les philosophes et verifie leur etat en comparant la duree entre le dernier repas de chaque philosophe avec time_to_die , si cette duree est depassee le programme doit se terminer apres la destruction des mutex et la liberation de memoire allouee. 
+J'ai créé deux structures : une qui représente chaque philosophe et ses données personnelles comme l'id, et une autre structure générale pour toutes les informations partagées par tous les philosophes, telles que les durées, le nombre de philosophes et les mutexes. Bien sur, vous pouvez faire autrement, mais je suggère de faire en sorte que chaque philosophe pointe vers la structure de données générale.
 
+Après l'initialisation des données, on met une boucle afin de créer n philosophes qui exécuteront la fonction responsable des 3 actions (thinking, taking forks, eating and sleeping). Faites en sorte de lancer d'abord les threads d'indices pairs en premier, puis ceux d'indices impairs afin de permettre un petit intervalle d'exécution entre les philosophes pour éviter les interblocages (utilisez ft_usleep aussi). N'oubliez pas de verrouiller toutes les ressources partagées (forks, fprintf, des variables partagées, etc.). Une fois que les philosophes sont lancés, il est nécessaire de vérifier s'ils sont morts ou pas. Pour cela, on a besoin d'un moniteur qui surveille tous les philosophes et vérifie leur état en comparant la durée entre le dernier repas de chaque philosophe avec time_to_die. Si cette durée est dépassée, le programme doit se terminer après la destruction des mutex et la libération de la mémoire allouée.
 
 
 
