@@ -6,7 +6,7 @@
 /*   By: yait-oul <yait-oul@student.1337.ma >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 18:35:18 by yait-oul          #+#    #+#             */
-/*   Updated: 2023/04/18 16:03:39 by yait-oul         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:28:10 by yait-oul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,6 @@ int	main(int ac, char **av)
 	}
 	
 	waitpid(-1, &status, 0);
-	exit_philo(&philo);
+	exit_freeing_philo(&philo);
 	return (0);
 }

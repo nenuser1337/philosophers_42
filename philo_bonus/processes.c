@@ -6,7 +6,7 @@
 /*   By: yait-oul <yait-oul@student.1337.ma >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 18:35:14 by yait-oul          #+#    #+#             */
-/*   Updated: 2023/04/16 21:53:06 by yait-oul         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:28:24 by yait-oul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	eating(t_philo *philo, int i)
 	pthread_join(philo->monitor, NULL);
 }
 
-void	exit_philo(t_philo **philo)
+void	exit_freeing_philo(t_philo **philo)
 {
 	t_philo	*ptr;
 	int		i;
