@@ -13,10 +13,10 @@ La synchronisation est réalise par le biais d'un [algorithme concurrent](https:
 
 [Et s'te-plait, parle cash, n*gro, parle-moi concrètement](https://genius.com/Freeze-corleone-fentanyl-lyrics).       
     
-Très bien, pour résoudre ce problème, nous avons besoin de mettre en place un mécanisme de synchronisation entre les threads qui représentent les philosophes, et les ressources partagées qui sont les fourchettes. Comme chaque philosophe a besoin de deux fourchettes pour manger, il est essentiel de garantir que deux philosophes adjacents ne peuvent pas accéder a deux fourchettes en meme temps. Le but est de trouver une solution pour que tous les philosophes puissent manger, dormir et réfléchir avant que la durée donnée par "time_to_die" ne s'écoule.
+Très bien, pour résoudre ce problème, nous avons besoin de mettre en place un mécanisme de synchronisation entre les threads qui représentent les philosophes, et les ressources partagées qui sont les fourchettes. Comme chaque philosophe a besoin de deux fourchettes pour manger, il est essentiel de garantir que deux philosophes adjacents ne peuvent pas accéder a deux fourchettes en même temps. Le but est de trouver une solution pour que tous les philosophes puissent manger, dormir et réfléchir avant que la durée donnée par "time_to_die" ne s'écoule.
 
-La synchronisation nous permettra d'éviter les "data-races" qui surviennent lorsque deux ou plusieurs philosophes/threads essaient de modifier une même ressource partagée en meme temps.
-Je vais utiliser une analogie simple pour illustrer l'aspect technique de la solution. Imaginons une file d'attente de personnes attendant qu'un cabinet d'essayage se libère pour l'utiliser. À chaque fois qu'une personne entre, elle verrouille la porte avec une clé. La personne suivante vérifie si la porte est verrouillée ou non pour entrer, et ainsi de suite pour le reste de la file. Dans le domaine de l'informatique, on a une abstraction de cette clé de porte, ce sont les mutexes. Ce sont des verrous utilisés pour verrouiller une ressource partagée pour un seul thread et la libérer après.. dans notre projet les ressources partages sont les fourchettes et les printfs (chaque thread utilise la meme printf pour afficher un message de son etat actuel)
+La synchronisation nous permettra d'éviter les "data-races" qui surviennent lorsque deux ou plusieurs philosophes/threads essaient de modifier une même ressource partagée en même temps.
+Je vais utiliser une analogie simple pour illustrer l'aspect technique de la solution. Imaginons une file d'attente de personnes attendant qu'un cabinet d'essayage se libère pour l'utiliser. À chaque fois qu'une personne entre, elle verrouille la porte avec une clé. La personne suivante vérifie si la porte est verrouillée ou non pour entrer, et ainsi de suite pour le reste de la file. Dans le domaine de l'informatique, on a une abstraction de cette clé de porte, ce sont les mutexes. Ce sont des verrous utilisés pour verrouiller une ressource partagée pour un seul thread et la libérer après.. dans notre projet les ressources partages sont les fourchettes et les printfs (chaque thread utilise la même printf pour afficher un message de son etat actuel)
 
 Dans notre projet, les ressources partagées sont les fourchettes et les printfs (chaque thread utilise la même printf pour afficher un message sur son état actuel).
 
@@ -31,7 +31,7 @@ Pour résumer le projet, chaque philosophe se comportera de cette manière :
 -Poser la fourchette à gauche.
 -Répéter depuis le début.
 
-Attention, une utilisation erronée des mutex peut entrainer un **deadlock**(Un deadlock est une situation dans laquelle aucun membre ne peut procéder, car chacun attend que les autres membres prennent action, y compris lui meme). Un exemple pour ce cas de figure :
+Attention, une utilisation erronée des mutex peut entrainer un **deadlock**(Un deadlock est une situation dans laquelle aucun membre ne peut procéder, car chacun attend que les autres membres prennent action, y compris lui même). Un exemple pour ce cas de figure :
 ```
 
 #include <stdio.h>
