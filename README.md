@@ -4,9 +4,9 @@ multithreading project in c to solve the dining philosophers problem.
 ## description du projet : 
 Avant de commencer, je presume que vous etes déjà familiarisé avec les fonctions de threads et leur fonctionnement en code. si ce n'est pas le cas, je vous conseille de vous renseigner à ce sujet avant de poursuivre la lecture .
 
-Le diner des philosophes est un exemple courant pour illustrer le concept de synchronisation en informatique système. La synchronisation, dans le cadre de notre projet (Mandatory part), on se concentrera sur les threads. Un thread est la plus petite séquence d'instructions programmée par le scheduler (processus responsable d'attribuer les ressources nécessaires pour effectuer une tache).
+Le diner des philosophes est un exemple courant pour illustrer le concept de **synchronisation** en informatique système. La synchronisation, dans le cadre de notre projet (Mandatory part), on se concentrera sur les threads. Un thread est la plus petite séquence d'instructions programmée par le scheduler (processus responsable d'attribuer les ressources nécessaires pour effectuer une tache).
 
-La synchronisation entre threads est un mécanisme qui assure que deux threads concurrents ou plus n'exécutent pas un segment particulier du programme en meme temps. Ce segment s'appelle la section critique (une partie de code accédée par plusieurs threads en meme temps). En d'autres termes, la synchronisation garantit une exécution concurrente et non simultanee entre les threads. Cette méthode est utile pour éviter les "data races" : l'acces simultané à une ressource partagée par plusieurs acteurs.
+La synchronisation entre threads est un mécanisme qui assure que deux threads concurrents ou plus n'exécutent pas un segment particulier du programme en meme temps. Ce segment s'appelle **la section critique** (une partie de code accédée par plusieurs threads en meme temps). En d'autres termes, la synchronisation garantit une exécution concurrente et non simultanee entre les threads. Cette méthode est utile pour éviter les **data races** : l'acces simultané à une ressource partagée par plusieurs acteurs.
 
 La synchronisation est réalise par le biais d'un [algorithme concurrent](https://en.wikipedia.org/wiki/Concurrency_(computer_science)). , ou plusieurs taches peuvent etre exécutées dans une période de temps qui se chevauche (sans entrer en conflit). L'intéret de cette méthode est de garantir l'exécution correcte des threads et d'éviter les erreurs de concurrence.      
 
@@ -31,7 +31,7 @@ Pour résumer le projet, chaque philosophe se comportera de cette manière :
 -Poser la fourchette à gauche.
 -Répéter depuis le début.
 
-Attention, une utilisation erronée des mutex peut entrainer un deadlock. Un exemple pour ce cas de figure :
+Attention, une utilisation erronée des mutex peut entrainer un **deadlock**(Un deadlock est une situation dans laquelle aucun membre ne peut procéder, car chacun attend que les autres membres prennent action, y compris lui meme). Un exemple pour ce cas de figure :
 ```
 
 #include <stdio.h>
