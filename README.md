@@ -2,20 +2,20 @@
 multithreading project in c to solve the dining philosophers problem.
 
 ## description du projet : 
-Avant de commencer, je présume que vous etes déjà familiarisé avec les fonctions de threads et leur fonctionnement en code. si ce n'est pas le cas, je vous conseille de vous renseigner à ce sujet avant de poursuivre la lecture .
+Avant de commencer, je presume que vous etes déjà familiarisé avec les fonctions de threads et leur fonctionnement en code. si ce n'est pas le cas, je vous conseille de vous renseigner à ce sujet avant de poursuivre la lecture .
 
-Le diner des philosophes est un exemple courant pour illustrer le concept de synchronisation en informatique système. La synchronisation, dans le cadre de notre projet (Mandatory part), on se concentera sur les threads. Un thread est la plus petite séquence d'instructions programmée par le scheduler (processus responsable d'attribuer les ressources nécessaires pour effectuer une tache).
+Le diner des philosophes est un exemple courant pour illustrer le concept de synchronisation en informatique système. La synchronisation, dans le cadre de notre projet (Mandatory part), on se concentrera sur les threads. Un thread est la plus petite séquence d'instructions programmée par le scheduler (processus responsable d'attribuer les ressources nécessaires pour effectuer une tache).
 
-La synchronisation entre threads est un mécanisme qui assure que deux threads concurrents ou plus n'exécutent pas un segment particulier du programme en meme temps. Ce segment s'appelle la section critique (une partie de code accédée par plusieurs threads en meme temps). En d'autres termes, la synchronisation garantit une exécution concurrente et non simultanée entre les threads. Cette méthode est utile pour éviter les "data races" : l'accès simultané à une ressource partagée par plusieurs acteurs.
+La synchronisation entre threads est un mécanisme qui assure que deux threads concurrents ou plus n'exécutent pas un segment particulier du programme en meme temps. Ce segment s'appelle la section critique (une partie de code accédée par plusieurs threads en meme temps). En d'autres termes, la synchronisation garantit une exécution concurrente et non simultanee entre les threads. Cette méthode est utile pour éviter les "data races" : l'acces simultané à une ressource partagée par plusieurs acteurs.
 
-La synchronisation est réalisée par le biais d'un [algorithme concurrent](https://en.wikipedia.org/wiki/Concurrency_(computer_science)). , où plusieurs tâches peuvent être exécutées dans une période de temps qui se chevauche (sans entrer en conflit). L'intérêt de cette méthode est de garantir l'exécution correcte des threads et d'éviter les erreurs de concurrence.      
+La synchronisation est réalise par le biais d'un [algorithme concurrent](https://en.wikipedia.org/wiki/Concurrency_(computer_science)). , ou plusieurs taches peuvent etre exécutées dans une période de temps qui se chevauche (sans entrer en conflit). L'intéret de cette méthode est de garantir l'exécution correcte des threads et d'éviter les erreurs de concurrence.      
 
 
 [Et s'te-plait, parle cash, n*gro, parle-moi concrètement](https://genius.com/Freeze-corleone-fentanyl-lyrics).       
     
-Très bien, pour résoudre ce problème, nous avons besoin de mettre en place un mécanisme de synchronisation entre les threads qui représentent les philosophes, et les ressources partagées qui sont les fourchettes. Comme chaque philosophe a besoin de deux fourchettes pour manger, il est essentiel de garantir que deux philosophes adjacents ne peuvent pas accéder à deux fourchettes en même temps. Le but est de trouver une solution pour que tous les philosophes puissent manger, dormir et réfléchir avant que la durée donnée par "time_to_die" ne s'écoule.
+Très bien, pour résoudre ce problème, nous avons besoin de mettre en place un mécanisme de synchronisation entre les threads qui représentent les philosophes, et les ressources partagées qui sont les fourchettes. Comme chaque philosophe a besoin de deux fourchettes pour manger, il est essentiel de garantir que deux philosophes adjacents ne peuvent pas accéder a deux fourchettes en meme temps. Le but est de trouver une solution pour que tous les philosophes puissent manger, dormir et réfléchir avant que la durée donnée par "time_to_die" ne s'écoule.
 
-La synchronisation nous permettra d'éviter les "data-races" qui surviennent lorsque deux ou plusieurs philosophes/threads essaient de modifier une même ressource partagée en même temps.
+La synchronisation nous permettra d'éviter les "data-races" qui surviennent lorsque deux ou plusieurs philosophes/threads essaient de modifier une même ressource partagée en meme temps.
 Je vais utiliser une analogie simple pour illustrer l'aspect technique de la solution. Imaginons une file d'attente de personnes attendant qu'un cabinet d'essayage se libère pour l'utiliser. À chaque fois qu'une personne entre, elle verrouille la porte avec une clé. La personne suivante vérifie si la porte est verrouillée ou non pour entrer, et ainsi de suite pour le reste de la file. Dans le domaine de l'informatique, on a une abstraction de cette clé de porte, ce sont les mutexes. Ce sont des verrous utilisés pour verrouiller une ressource partagée pour un seul thread et la libérer après.. dans notre projet les ressources partages sont les fourchettes et les printfs (chaque thread utilise la meme printf pour afficher un message de son etat actuel)
 
 Dans notre projet, les ressources partagées sont les fourchettes et les printfs (chaque thread utilise la même printf pour afficher un message sur son état actuel).
@@ -31,7 +31,7 @@ Pour résumer le projet, chaque philosophe se comportera de cette manière :
 -Poser la fourchette à gauche.
 -Répéter depuis le début.
 
-Attention, une utilisation erronée des mutex peut entraîner un deadlock. Un exemple pour ce cas de figure :
+Attention, une utilisation erronée des mutex peut entrainer un deadlock. Un exemple pour ce cas de figure :
 ```
 
 #include <stdio.h>
@@ -71,9 +71,8 @@ int main() {
   return 0;
 }
 ```
-Dans cet exemple, il y a deux threads qui sont exécutés simultanément. Chaque thread essaie de verrouiller deux mutex différents (mutexA et mutexB) dans un ordre différent. Si les deux threads essaient d'obtenir les deux mutex en même temps, cela peut causer un deadlock.
+Dans cet exemple, deux threads s'exécutent simultanément. Chaque thread tente de verrouiller deux mutex différents (mutexA et mutexB) dans un ordre différent. Si les deux threads essaient d'obtenir les deux mutex en meme temps, cela peut provoquer une impasse (deadlock)
 
-imaginons que le thread A obtienne mutexA et le thread B obtienne mutexB, mais ensuite le thread A essaie d'obtenir mutexB, qui est déjà verrouillé par le thread B, et le thread B essaie d'obtenir mutexA, qui est déjà verrouillé par le thread A. Ainsi, les deux threads restent bloqués indéfiniment et le programme est dans un état de deadlock.
 
 ## implementation :
 
