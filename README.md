@@ -2,6 +2,8 @@
 multithreading project in c to solve the dining philosophers problem.
 
 ## description du projet : 
+Avant de commencer, je présume que vous êtes déjà familiarisé avec les fonctions de threads et leur fonctionnement en code. Si ce n'est pas le cas, je vous conseille de vous renseigner à ce sujet avant de poursuivre la lecture .
+
 Le diner des philosophes est un exemple courant pour illustrer le concept de synchronisation en informatique système. La synchronisation, dans le cadre de notre projet (partie obligatoire), se concentre sur les threads. Un thread est la plus petite séquence d'instructions programmée par le scheduler (processus responsable d'attribuer les ressources nécessaires pour effectuer une tâche).
 
 La synchronisation entre threads est un mécanisme qui assure que deux threads concurrents ou plus n'exécutent pas un segment particulier du programme en même temps. Ce segment s'appelle la section critique (une partie de code accédée par plusieurs threads en même temps). En d'autres termes, la synchronisation garantit une exécution concurrente et non simultanée entre les threads. Cette méthode est utile pour éviter les "data races" : l'accès simultané à une ressource partagée par plusieurs acteurs.
