@@ -9,6 +9,8 @@ Le diner des philosophes est un exemple courant pour illustrer le concept de syn
 La synchronisation entre threads est un mécanisme qui assure que deux threads concurrents ou plus n'exécutent pas un segment particulier du programme en même temps. Ce segment s'appelle la section critique (une partie de code accédée par plusieurs threads en même temps). En d'autres termes, la synchronisation garantit une exécution concurrente et non simultanée entre les threads. Cette méthode est utile pour éviter les "data races" : l'accès simultané à une ressource partagée par plusieurs acteurs.
 
 La synchronisation est réalisée au moyen d'un algorithme concurrent, où plusieurs tâches peuvent être exécutées dans une période de temps qui se chevauche (sans entrer en conflit). L'intérêt de cette méthode est de garantir l'exécution correcte des threads et d'éviter les erreurs de concurrence.
+
+
 [Et s'te-plait, parle cash, n*gro, parle-moi concrètement](https://genius.com/Freeze-corleone-fentanyl-lyrics).
 
 Très bien, pour résoudre ce problème, nous avons besoin de mettre en place un mécanisme de synchronisation entre les threads qui représentent les philosophes, et les ressources partagées qui sont les fourchettes. Comme chaque philosophe a besoin de deux fourchettes pour manger, il est essentiel de garantir que deux philosophes adjacents ne peuvent pas accéder à deux fourchettes en même temps. Le but est de trouver une solution pour que tous les philosophes puissent manger, dormir et réfléchir avant que la durée donnée par "time_to_die" ne s'écoule.
