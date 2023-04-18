@@ -1,7 +1,7 @@
 # philosophers_42
 multithreading project in c to solve the dining philosophers problem.
 
-description du projet : 
+## description du projet : 
 le diner des philosophes est un bon example pour illustrer le concept de **sychronisation** en informatique systemes.
 qu'est ce qu'on entend par sychronisation , dans le cadre de notre projet (mandatory part) on va se focaliser sur les threads. 
 un thread est le plus petit sequence d'instructions programme par le **scheduler** (process reponsable d'attribuer les ressources necessaires pour effectuer une tache)
@@ -74,7 +74,7 @@ Dans cet exemple, il y a deux threads qui sont exécutés simultanément. Chaque
 
 imaginons que le thread A obtienne mutexA et le thread B obtienne mutexB, mais ensuite le thread A essaie d'obtenir mutexB, qui est déjà verrouillé par le thread B, et le thread B essaie d'obtenir mutexA, qui est déjà verrouillé par le thread A. Ainsi, les deux threads restent bloqués indéfiniment et le programme est dans un état de deadlock.
 
-#implementation :
+## implementation :
 
 j'ai cree deux structures , une qui represente chaque philosophe et ses donnees perso comme id, et une autre structure generale pour toutes les infos partages par tous les philosophes , tel que les durees , nombre de philos et les mutexes ... bien sur vous pouvez faire autrement mais je suggere de faire en sorte que chaque philosophe pointe sur la structure de data generale.
 Apres l'initialisation des donnes , on met une boucle afin de creer n philosophes qui executerons la fonction responsable des 3 actions (thinking , taking forks , eating and sleeping) , faites en sorte de lancer d'abord les threads d'indices paires en premier puis ceux d'indice impaire afin de permettre un petit interval d'execution entre les philosophes pour eviter les interblocages (utlisez ft_usleep aussi). n'oubliez pas de verouiller toute 
