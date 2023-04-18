@@ -70,6 +70,15 @@ int main() {
   return 0;
 }
 ```
+Dans cet exemple, il y a deux threads qui sont exécutés simultanément. Chaque thread essaie de verrouiller deux mutex différents (mutexA et mutexB) dans un ordre différent. Si les deux threads essaient d'obtenir les deux mutex en même temps, cela peut causer un deadlock.
+
+imaginons que le thread A obtienne mutexA et le thread B obtienne mutexB, mais ensuite le thread A essaie d'obtenir mutexB, qui est déjà verrouillé par le thread B, et le thread B essaie d'obtenir mutexA, qui est déjà verrouillé par le thread A. Ainsi, les deux threads restent bloqués indéfiniment et le programme est dans un état de deadlock.
+
+#implementation :
+
+j'ai cree deux structures , une qui represente chaque philosophe et ses donnees perso comme id, et une autre structure generale pour toutes les infos partages par tous les philosophes , tel que les durees , nombre de philos et les mutexes ... bien sur vous pouvez faire autrement mais je suggere de faire en sorte que chaque philosophe pointe sur la structure de data generale.
+Apres l'initialisation des donnes , on met une boucle afin de creer n philosophes qui executerons la fonction responsable des 3 actions (thinking , taking forks , eating and sleeping) , faites en sorte de lancer d'abord les threads d'indices paires en premier puis ceux d'indice impaire afin de permettre un petit interval d'execution entre les philosophes pour eviter les interblocages (utlisez ft_usleep aussi). n'oubliez pas de verouiller toute 
+ressource partagee (forks, fprintf, des variables partages , ect ect). une fois aue les philosopes sont lances il est necessaire de verifier si l'un d'entre eux est mort ou pas , pour cela on a besoin d'un moniteur qui surveille sur tous les philosophes et verifie leur etat en comparant la duree entre le dernier repas de chaque philosophe avec time_to_die , si cette duree est depassee le programme doit se terminer apres la destruction des mutex et la liberation de memoire allouee. 
 
 
 
