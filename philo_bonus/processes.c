@@ -6,7 +6,7 @@
 /*   By: yait-oul <yait-oul@student.1337.ma >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 18:35:14 by yait-oul          #+#    #+#             */
-/*   Updated: 2023/04/16 18:48:27 by yait-oul         ###   ########.fr       */
+/*   Updated: 2023/04/16 21:53:06 by yait-oul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@ void	*thread_monitoring(void *argv)
 	t_philo	*philo;
 
 	philo = (t_philo *)argv;
+		
+		sem_wait(philo->data->last_lunch);
 	while (philo->data->dead == 0)
 	{
 		usleep(100);
-		sem_wait(philo->data->last_lunch);
+	
 		if ((int)(get_time() - (philo->lastt_lunch)) >= (philo->data->t_todie))
 		{
 			sem_post(philo->data->last_lunch);
@@ -31,6 +33,7 @@ void	*thread_monitoring(void *argv)
 			exit(0);
 		}
 		sem_post(philo->data->last_lunch);
+		
 	}
 	exit(0);
 }
@@ -40,7 +43,9 @@ void	eating(t_philo *philo, int i)
 	pthread_t	death;
 
 	(void)i;
+	
 	pthread_create(&death, NULL, &thread_monitoring, philo);
+	
 	while (1)
 	{
 		print_msg("is thinking", philo);
